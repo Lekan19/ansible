@@ -1,0 +1,7 @@
+- name: ping node
+  hosts: east-region-nodes
+  gather_facts: no
+  become: yes
+  tasks:
+    - name: ping test
+      ping:

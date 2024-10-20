@@ -1,0 +1,14 @@
+- name: configure a passwordless sudo for a specific group
+  hosts: east-region-nodes
+  become: yes
+  tasks:
+    - name: create a group for passwordless sudo
+      ansible.builtin.group:
+        name: admingroup
+        state: present
+
+    - name: configure passwordless sudo for the "admingroup" group
+      ansible.builtin.lineinfile:
+        path: /etc/sudoers
+        line: '%admingroup ALL=(ALL) NOPASSWORD: ALL'
+        validate: '/usr/sbin/visudo -cf %s'

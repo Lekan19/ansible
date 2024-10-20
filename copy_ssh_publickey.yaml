@@ -1,0 +1,10 @@
+- name: Copy ssh public key to managed node
+  hosts: east-region-nodes
+  gather_facts: no
+  become: yes
+  tasks:
+    - name: Set up authorized keys for the remote user
+      ansible.builtin.authorized_key:
+        user: adminuser
+        state: present
+        key: "{{ lookup('file', '/home/user/.ssh/id_rsa.pub') }}"

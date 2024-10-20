@@ -1,0 +1,15 @@
+- name:  create user 
+  hosts: east-region-nodes
+  gather_facts: no
+  become: yes
+  tasks:
+    - name: Ensure the groupn is present
+      ansible.builtin.user:
+        name: adminuser
+        state: present
+        createhome: yes
+        groups: admingroup
+        append: yes
+
+
+        

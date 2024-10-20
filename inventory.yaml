@@ -1,0 +1,23 @@
+all:
+  children:
+    east-region-nodes:
+      hosts:
+        compute-1:
+          ansible_host: 10.x.x.x
+          ansible-user: ubuntu
+
+        compute-2:
+          ansible_host: 10.x.x.x
+          ansible_user: ubuntu
+
+
+    west-region-nodes:
+      hosts:
+        data-vm-1: 
+          ansible_host: 172.x.x.x
+          ansible-user: ubuntu
+
+        data-vm-2:
+          ansible_host: 172.x.x.x
+          ansible_user: ubuntu
+
